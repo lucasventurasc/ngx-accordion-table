@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "marvel-avengers-app"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "tsconfig": "tsconfig.app.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+      ],
+      "scripts": [
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/ngx-accordion-table/js/ngx-accordion-table-script.js"
+      ]
+    }
+  ]
+}

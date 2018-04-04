@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "stripInternal": true,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "noImplicitAny": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "paths": {
+      "@angular/core": ["node_modules/@angular/core"],
+      "@angular/platform-browser": ["node_modules/@angular/platform-browser"],
+      "@angular/common": ["node_modules/@angular/common"]
+    },
+    "rootDir": ".",
+    "outDir": "dist",
+    "sourceMap": true,
+    "inlineSources": true,
+    "target": "es5",
+    "skipLibCheck": true,
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  },
+  "files": [
+    "component/ngx-accordion-template.ts",
+    "component/ngx-accordion-table.module.ts",
+    "./node_modules/@angular/platform-browser/src/security/dom_sanitization_service.d.ts",
+    "ngx-accordion-table-js.js"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true
+  }
+}

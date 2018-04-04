@@ -1,0 +1,35 @@
+<table width="100%" class="ngx-accordion-table">
+    <thead>
+        <th *ngFor="let column of template.tableColumns" width="{{column.width}}">{{column.name}}</th>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let row of data.rows">
+            <tr onclick="toggleSibling(this)">
+                <td class="chevron">
+                    <span class="chevron-up"></span>
+                </td>
+                <ng-container *ngFor="let cell of row.cells; let i = index;">
+                    <td *ngIf="data.isHtmlColumn(i)" [innerHTML]="cell | keepHtml"></td>
+                    <td *ngIf="!data.isHtmlColumn(i)">{{cell}}</td>
+                </ng-container>
+
+            </tr>
+            <tr class="extra">
+                <td colspan="5" style="padding-left:80px;">
+                    <table class="ngx-accordion-accordion" width="100%">
+                        <thead>
+                            <th *ngFor="let accordionColumn of template.accordionColumns" width="{{accordionColumn.width}}">
+                                {{accordionColumn.name}}
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let accordionRow of row.accordionRows">
+                                <td *ngFor="let accordionCell of accordionRow.cells">{{accordionCell}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
