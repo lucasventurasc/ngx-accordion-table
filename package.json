@@ -9,7 +9,13 @@
     "accordion",
     "table",
     "table-accordion",
-    "table-inside-table"
+    "table-inside-table",
+    "angular2",
+    "angular4",
+    "angular-accordion",
+    "angular-table",
+    "angular-accordion-table",
+    "angular-component-accordion"
   ],
   "author": "Lucas Ventura",
   "license": "MIT",
