@@ -58,8 +58,7 @@ In your component HTML code you need to write the accordion-table directive with
  **[template]** which will the reference of your accordion template;
  **[data]** which be the representation of all data
 ```html
-<ngx-accordion-table [template]="accordionTemplate" 
-					 [data]="accordionData">
+<ngx-accordion-table [template]="accordionTemplate" [data]="accordionData">
 </ngx-accordion-table>
 ```
 Now we need to build our template, in your component.ts you will use the class **AccordionTemplate** to write your template.
@@ -132,7 +131,7 @@ If we run this code we could see a table like this
 That code could be found in example folder within this repository.
 
 ## For developers <3
-After clone and inside project folder:
+After clone and inside of project folder:
 ```bash
 npm install . #to install dependencies
 ```
@@ -142,7 +141,7 @@ npm run build && cd dist && npm pack
 ```
 To run example project:
 ```bash
-cd example/marvel-app-example/
+cd example/marvel-avengers-app/
 npm install . # will install all dependencies together with ngx-accordion-table component
 ng serve # will start angular server at localhost:4200
 ```
