@@ -131,7 +131,7 @@ If we run this code we could see a table like this
 That code could be found in example folder within this repository.
 
 ## For developers <3
-After clone and inside project folder:
+After clone and inside of project folder:
 ```bash
 npm install . #to install dependencies
 ```
