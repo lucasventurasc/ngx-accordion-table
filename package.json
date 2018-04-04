@@ -1,9 +1,9 @@
 {
   "name": "ngx-accordion-table",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A component to build tables with accordion concept using tables inside tables with flexibility",
   "scripts": {
-    "build": "ng-packagr -p ng-package.json && cp js dist/ -r"
+    "build": "ng-packagr -p ng-package.json && cp js dist/ -r && cp README.md dist/"
   },
   "keywords": [
     "accordion",
@@ -13,6 +13,10 @@
   ],
   "author": "Lucas Ventura",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucasventurasc/ngx-accordion-table.git"
+  },
   "dependencies": {
     "@angular/common": "^5.2.0",
     "@angular/core": "^5.2.0",
