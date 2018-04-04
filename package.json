@@ -1,7 +1,7 @@
 {
   "name": "ngx-accordion-table",
   "version": "1.0.2",
-  "description": "A component to build tables with accordion concept using tables inside tables with flexibility",
+  "description": "A small Angular2/Angular4 component to build accordion tables (tables which each row have another table) can be used for example to display detailed information from each row",
   "scripts": {
     "build": "ng-packagr -p ng-package.json && cp js dist/ -r && cp README.md dist/"
   },
