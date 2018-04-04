@@ -141,7 +141,7 @@ npm run build && cd dist && npm pack
 ```
 To run example project:
 ```bash
-cd example/marvel-app-example/
+cd example/marvel-avengers-app/
 npm install . # will install all dependencies together with ngx-accordion-table component
 ng serve # will start angular server at localhost:4200
 ```
