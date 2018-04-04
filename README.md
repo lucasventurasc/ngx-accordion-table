@@ -58,8 +58,7 @@ In your component HTML code you need to write the accordion-table directive with
  **[template]** which will the reference of your accordion template;
  **[data]** which be the representation of all data
 ```html
-<ngx-accordion-table [template]="accordionTemplate" 
-					 [data]="accordionData">
+<ngx-accordion-table [template]="accordionTemplate" [data]="accordionData">
 </ngx-accordion-table>
 ```
 Now we need to build our template, in your component.ts you will use the class **AccordionTemplate** to write your template.
