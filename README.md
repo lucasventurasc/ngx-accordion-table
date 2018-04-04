@@ -8,7 +8,7 @@ small javascript functions behind the scenes.
 Please feel free to fork, contribute and open pull requests for this project.
 
 
-V1.00 - This first version have low flexibility and features but the idea is to improve for everything
+V1.0.x - This first version have low flexibility and features but the idea is to improve for everything
 which is needed.
 
 ## Getting Started
