@@ -54,7 +54,7 @@ export class AccordionTemplate {
         let chevronColumn = new TableColumn("", "50px");
         this.tableColumns = [chevronColumn];
         this.accordionColumns = [];
-        this.interactiveColumn = `<span class="chevron-up"></span>`;
+        this.interactiveColumn = `<span _ngcontent-c1 class="chevron-up"></span>`;
     }
 
     /**
@@ -77,7 +77,7 @@ export class AccordionTemplate {
      * Changes first column of table with html template received, allow to implement your own image, or icon o additional behaviour.
      */
     setInteractiveColumn(htmlTemplate: string) {
-        this.interactiveColumn = htmlTemplate;
+        this.interactiveColumn = htmlTemplate.replace(/(.*?)>(.*)/, '$1 _ngcontent-c1>$2');
     }
 
     /**

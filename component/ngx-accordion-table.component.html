@@ -6,7 +6,7 @@
         <ng-container *ngFor="let row of data.rows">
             <tr onclick="toggleSibling(this)">
                 <td class="chevron">
-                    <span class="chevron-up"></span>
+                    <span _ngcontent-c1 [innerHTML]="template.interactiveColumn | keepHtml"></span>
                 </td>
                 <ng-container *ngFor="let cell of row.cells; let i = index;">
                     <td *ngIf="data.isHtmlColumn(i)" [innerHTML]="cell | keepHtml"></td>
