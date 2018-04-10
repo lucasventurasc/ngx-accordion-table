@@ -20,7 +20,7 @@ export class AppComponent {
         template.addColumn("Marvel Movie", "*")
             .addColumn("Year", "50px")
             .addColumn("Main Character", "250px")
-            .addHtmlColumn("Revenues", "100px")
+            .addHtmlColumn("Revenues", "100px");
         template.addAccordionColumn("Avenger Name", "200px")
             .addAccordionColumn("Avenger Codename", "400px")
             .addAccordionColumn("Main Power", "400px");

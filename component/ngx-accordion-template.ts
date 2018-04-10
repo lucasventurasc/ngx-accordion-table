@@ -48,11 +48,13 @@ export class AccordionColumn extends Column {
 export class AccordionTemplate {
     public accordionColumns: Array<AccordionColumn>;
     public tableColumns: Array<TableColumn>;
+    public interactiveColumn: string;
 
     constructor() {
         let chevronColumn = new TableColumn("", "50px");
         this.tableColumns = [chevronColumn];
         this.accordionColumns = [];
+        this.interactiveColumn = `<span class="chevron-up"></span>`;
     }
 
     /**
@@ -69,6 +71,13 @@ export class AccordionTemplate {
 
     getAccordionColumns() {
         return this.accordionColumns;
+    }
+
+    /**
+     * Changes first column of table with html template received, allow to implement your own image, or icon o additional behaviour.
+     */
+    setInteractiveColumn(htmlTemplate: string) {
+        this.interactiveColumn = htmlTemplate;
     }
 
     /**
