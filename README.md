@@ -8,7 +8,7 @@ small javascript functions behind the scenes.
 Please feel free to fork, contribute and open pull requests for this project.
 
 
-V1.0.x - This first version have low flexibility and features but the idea is to improve for everything
+V1.00 - This first version have low flexibility and features but the idea is to improve for everything
 which is needed.
 
 ## Getting Started
@@ -58,7 +58,8 @@ In your component HTML code you need to write the accordion-table directive with
  **[template]** which will the reference of your accordion template;
  **[data]** which be the representation of all data
 ```html
-<ngx-accordion-table [template]="accordionTemplate" [data]="accordionData">
+<ngx-accordion-table [template]="accordionTemplate" 
+					 [data]="accordionData">
 </ngx-accordion-table>
 ```
 Now we need to build our template, in your component.ts you will use the class **AccordionTemplate** to write your template.
@@ -130,8 +131,14 @@ If we run this code we could see a table like this
 ![opened](https://image.ibb.co/eJsn7H/ngx_marvel_accordion_table_example.png)
 That code could be found in example folder within this repository.
 
+
+You could change the first column (arrow-down) to your own html code, change the icon image to what you want  
+ ```typescript
+accordionTemplate.setInteractiveColumn('<span class="your own-css"></span>")
+```
+
 ## For developers <3
-After clone and inside of project folder:
+After clone and inside project folder:
 ```bash
 npm install . #to install dependencies
 ```
@@ -141,8 +148,8 @@ npm run build && cd dist && npm pack
 ```
 To run example project:
 ```bash
-cd example/marvel-avengers-app/
-npm install . # will install all dependencies together with ngx-accordion-table component
+cd example/marvel-app-example/
+npm install . #will install all dependencies together with ngx-accordion-table component
 ng serve # will start angular server at localhost:4200
 ```
 To update component in example project run

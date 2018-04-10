@@ -1,6 +1,6 @@
 {
   "name": "ngx-accordion-table",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A small Angular2/Angular4 component to build accordion tables (tables which each row have another table) can be used for example to display detailed information from each row",
   "scripts": {
     "build": "ng-packagr -p ng-package.json && cp js dist/ -r && cp README.md dist/"
@@ -15,7 +15,14 @@
     "angular-accordion",
     "angular-table",
     "angular-accordion-table",
-    "angular-component-accordion"
+    "angular-component-accordion",
+    "ngx-accordion-table",
+    "ngx-accordion",
+    "ng2-accordion",
+    "ngx-table",
+    "ng2-table",
+    "ng2-accordion-table"
+
   ],
   "author": "Lucas Ventura",
   "license": "MIT",
