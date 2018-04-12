@@ -4,10 +4,14 @@ export {SafeHtml}
 
 
 export class Row {
-    public cells: Array<String>;
+    private cells: Array<String>;
 
     constructor(cells: Array<String>) {
         this.cells = cells;
+    }
+
+    getCells() {
+        return this.cells;
     }
 }
 
@@ -45,16 +49,24 @@ export class AccordionColumn extends Column {
     }
 }
 
+export enum TargetOpenAction {
+    ROW = 1,
+    COLUMN = 2,
+    ELEMENT = 3
+}
+
 export class AccordionTemplate {
-    public accordionColumns: Array<AccordionColumn>;
-    public tableColumns: Array<TableColumn>;
-    public interactiveColumn: string;
+    private accordionColumns: Array<AccordionColumn>;
+    private tableColumns: Array<TableColumn>;
+    private interactiveColumn: string;
+    private targetOpenAction: TargetOpenAction;
 
     constructor() {
         let chevronColumn = new TableColumn("", "50px");
         this.tableColumns = [chevronColumn];
         this.accordionColumns = [];
         this.interactiveColumn = `<span _ngcontent-c1 class="chevron-up"></span>`;
+        this.targetOpenAction = TargetOpenAction.ROW;
     }
 
     /**
@@ -65,10 +77,30 @@ export class AccordionTemplate {
         return this;
     }
 
+    /**
+     * Returns all columns inclusively columns added automatically
+     */
+    getTableColumnsForView() {
+        return this.tableColumns;
+    }
+
+    /**
+     * Returns all columns added manually
+     */
     getTableColumns() {
         return this.tableColumns.slice(1, this.tableColumns.length);
     }
 
+    /**
+     * Return HTML from interactive column
+     */
+    getInteractiveColumn() {
+        return this.interactiveColumn;
+    }
+
+    /**
+     * Returns accordion columns added
+     */
     getAccordionColumns() {
         return this.accordionColumns;
     }
@@ -88,17 +120,34 @@ export class AccordionTemplate {
         return this;
     }
 
+    /**
+     * Add a column which is allowed to render HTML
+     */
     addHtmlColumn(name: string, width: string) {
         let tableColumn = new TableColumn(name, width);
         tableColumn.allowHtml(true);
         this.tableColumns.push(tableColumn);
+    }
+
+    /**
+     * Changes if accordion table will opened by click on element, row or column
+     */
+    setTargetOpenAction(action: TargetOpenAction) {
+        this.targetOpenAction = action;
+    }
+
+    /**
+     * Return target option specified
+     */
+    getTargetOpenAction() {
+        return this.targetOpenAction;
     }
 }
 
 export class AccordionData {
 
     private accordionTemplate: AccordionTemplate;
-    rows: Array<TableRow>;
+    private rows: Array<TableRow>;
 
     constructor(template: AccordionTemplate) {
         this.rows = [];
@@ -122,11 +171,15 @@ export class AccordionData {
         let column = this.accordionTemplate.getTableColumns()[index];
         return column.isHtmlAllowed
     }
+
+    getRows() {
+        return this.rows;
+    }
 }
 
 export class TableRow extends Row {
-    accordionRows: Array<AccordionRow>;
-    accordionTemplate: Array<AccordionColumn>;
+    private accordionRows: Array<AccordionRow>;
+    private accordionTemplate: Array<AccordionColumn>;
 
     constructor(cells, accordionTemplate: Array<AccordionColumn>) {
         super(cells);
@@ -153,6 +206,10 @@ export class TableRow extends Row {
         rows.forEach(function(cells) {
             that.addAccordionRow(cells);
         });
+    }
+
+    getAccordionRows() {
+        return this.accordionRows;
     }
 }
 

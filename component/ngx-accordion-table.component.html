@@ -1,14 +1,17 @@
+<template class="targetOpenAction" [innerHTML]="template.getTargetOpenAction()"></template>
 <table width="100%" class="ngx-accordion-table">
     <thead>
-        <th *ngFor="let column of template.tableColumns" width="{{column.width}}">{{column.name}}</th>
+        <th *ngFor="let column of template.getTableColumnsForView()" width="{{column.width}}">{{column.name}}</th>
     </thead>
     <tbody>
-        <ng-container *ngFor="let row of data.rows">
-            <tr onclick="toggleSibling(this)">
-                <td class="chevron">
-                    <span _ngcontent-c1 [innerHTML]="template.interactiveColumn | keepHtml"></span>
+        <ng-container *ngFor="let row of data.getRows()">
+            <tr onclick="toggleSibling(this, 1)">
+                <td class="chevron" onclick="toggleSibling(this, 2)">
+                    <span _ngcontent-c1 [innerHTML]="template.getInteractiveColumn() | keepHtml"
+                          onclick="toggleSibling(this, 3)">
+                    </span>
                 </td>
-                <ng-container *ngFor="let cell of row.cells; let i = index;">
+                <ng-container *ngFor="let cell of row.getCells(); let i = index;">
                     <td *ngIf="data.isHtmlColumn(i)" [innerHTML]="cell | keepHtml"></td>
                     <td *ngIf="!data.isHtmlColumn(i)">{{cell}}</td>
                 </ng-container>
@@ -18,12 +21,12 @@
                 <td colspan="5" style="padding-left:80px;">
                     <table class="ngx-accordion-accordion" width="100%">
                         <thead>
-                            <th *ngFor="let accordionColumn of template.accordionColumns" width="{{accordionColumn.width}}">
+                            <th *ngFor="let accordionColumn of template.getAccordionColumns()" width="{{accordionColumn.width}}">
                                 {{accordionColumn.name}}
                             </th>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let accordionRow of row.accordionRows">
+                            <tr *ngFor="let accordionRow of row.getAccordionRows()">
                                 <td *ngFor="let accordionCell of accordionRow.cells">{{accordionCell}}</td>
                             </tr>
                         </tbody>

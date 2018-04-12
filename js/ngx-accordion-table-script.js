@@ -1,5 +1,21 @@
-function toggleSibling(sibling){
-    sibling = sibling.nextSibling;
+function toggleSibling(sibling, expectedType) {
+    var type = parseInt(document.querySelectorAll('.targetOpenAction')[0].innerHTML);
+    if(type !== expectedType) {
+        return;
+    }
+
+    switch (type) {
+        case 1:
+            sibling = sibling.nextSibling;
+            break;
+        case 2:
+            sibling = sibling.parentElement.nextSibling;
+            break;
+        case 3:
+            sibling = sibling.parentElement.parentElement.nextSibling;
+            break;
+    }
+
     while(!/tr/i.test(sibling.nodeName)){
         sibling = sibling.nextSibling;
     }

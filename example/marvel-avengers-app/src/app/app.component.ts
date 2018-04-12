@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AccordionData, AccordionTemplate} from "ngx-accordion-table";
+import {TargetOpenAction} from "../../../../component/ngx-accordion-template";
 
 @Component({
     selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
 
     private static buildTemplate() {
         let template = new AccordionTemplate();
+        template.setTargetOpenAction(TargetOpenAction.ELEMENT);
         template.addColumn("Marvel Movie", "*")
             .addColumn("Year", "50px")
             .addColumn("Main Character", "250px")
