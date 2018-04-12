@@ -139,8 +139,8 @@ accordionTemplate.setInteractiveColumn('<span class="your own-css"></span>")
 
 It is possible choose 3 different behaviors to open accordion. [ROW, COLUMN, ELEMENT].
 When ROW is set (default), will open accordion by clicking on row
-When COLUMN is set, will open accordion by clicking on column (is useful when you change the default element to another which will not have option to click on element)
-When ELEMENT is set, will open accordion by clicking on directly on element
+When COLUMN is set, will open accordion by clicking on column
+When ELEMENT is set, will open accordion by clicking directly on element
 ```typescript
 import {AccordionTemplate, TargetOpenAction};
 
