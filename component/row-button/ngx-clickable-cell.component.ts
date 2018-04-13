@@ -14,13 +14,10 @@ export class NgxClickableCellComponent {
     @Input() isHtml: boolean;
     @Input() column: Column;
     @Input() row: TableRow;
-    private eventEmitter: EventEmitter<any>;
 
     constructor() {}
 
     fireCellClick(event) {
         this.eventListener.notifyClickOn(this.row, this.column);
-        console.log(JSON.stringify(event));
-        console.log(this.row);
     }
 }
