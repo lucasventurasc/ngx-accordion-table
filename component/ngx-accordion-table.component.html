@@ -1,7 +1,10 @@
 <template class="targetOpenAction" [innerHTML]="template.getTargetOpenAction()"></template>
 <table width="100%" class="ngx-accordion-table">
     <thead>
-        <th *ngFor="let column of template.getTableColumnsForView()" width="{{column.width}}">{{column.name}}</th>
+        <th *ngFor="let column of template.getTableColumnsForView()" width="{{column.width}}"
+            [hidden]="column.hidden">
+            {{column.name}}
+        </th>
     </thead>
     <tbody>
         <ng-container *ngFor="let row of data.getRows()">
@@ -12,14 +15,14 @@
                     </span>
                 </td>
                 <ng-container *ngFor="let cell of row.getCells(); let i = index;">
-                    <td *ngIf="data.isHtmlColumn(i)">
+                    <td *ngIf="data.isHtmlColumn(i)" [hidden]="template.getTableColumns()[i].hidden">
                         <ngx-clickable-cell [eventListener]="template.eventListener"
                                             [isHtml]="true"
                                             [value]="cell"
                                             [row]="row"
                                             [column]="template.getTableColumns()[i]"></ngx-clickable-cell>
                     </td>
-                    <td *ngIf="!data.isHtmlColumn(i)">
+                    <td *ngIf="!data.isHtmlColumn(i)" [hidden]="template.getTableColumns()[i].hidden">
                         <ngx-clickable-cell [eventListener]="template.eventListener"
                                             [value]="cell"
                                             [row]="row"
@@ -32,14 +35,24 @@
                 <td colspan="5" style="padding-left:80px;">
                     <table class="ngx-accordion-accordion" width="100%">
                         <thead>
-                            <th *ngFor="let accordionColumn of template.getAccordionColumns()" width="{{accordionColumn.width}}">
+                            <th *ngFor="let accordionColumn of template.getAccordionColumns()" width="{{accordionColumn.width}}"
+                                [hidden]="accordionColumn.hidden">
                                 {{accordionColumn.name}}
                             </th>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let accordionRow of row.getAccordionRows()">
-                                <td *ngFor="let accordionCell of accordionRow.cells">{{accordionCell}}</td>
-                            </tr>
+                            <ng-container *ngFor="let accordionRow of row.getAccordionRows()">
+                                <tr>
+                                    <ng-container *ngFor="let accordionCell of accordionRow.cells; let y = index;">
+                                        <td [hidden]="template.getAccordionColumns()[y].hidden">
+                                            <ngx-clickable-cell [eventListener]="template.eventListener"
+                                                                [value]="accordionCell"
+                                                                [row]="row"
+                                                                [column]="template.getAccordionColumns()[y]"></ngx-clickable-cell>
+                                        </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
                         </tbody>
                     </table>
                 </td>

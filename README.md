@@ -8,10 +8,10 @@ small javascript functions behind the scenes.
   
 Please feel free to fork, contribute and open pull requests for this project.  
   
-  
-V1.0.X - This first version have low flexibility and features but the idea is to improve for everything which is needed.
-    V1.0.6 - Added flexibility to specify interactive column behavior and design.
-    V1.0.7 - Added support to subscribe click events on columns both html and non-html columns.    
+  V1.X.X - This first version have low flexibility and features but the idea is to improve for everything which is needed.  
+*  V1.0.6 - Added flexibility to specify interactive column behavior and design.     
+*  V1.0.8 - Added support to subscribe click events on columns both html and non-html columns.  
+*  V1.0.10 - Added option to create hidden columns to use with subscribe event and identify potentially elements.  
   
 ## Getting Started  
   
@@ -65,22 +65,26 @@ import {AccordionTemplate} from 'ngx-accordion-table';
        this.accordionTemplate = YourComponent.buildTemplate();    
     }    
 private static buildTemplate() {    
-        let template = new AccordionTemplate();    
+       let template = new AccordionTemplate();    
        template.addColumn("Marvel Movie", "*")    
                .addColumn("Year", "100px")    
                .addColumn("Main Character", "150px")    
-               .addHtmlColumn("Revenues", "100px")    
+               .addHtmlColumn("Revenues", "100px")
+               .addHiddenColumn("identifier");    
       template.addAccordionColumn("Avenger Name", "200px")    
                .addAccordionColumn("Avenger Codename", "400px")    
-               .addAccordionColumn("Main Power", "400px");  
- return template;    }  
+               .addAccordionColumn("Main Power", "400px")
+               .addAccordionHiddenColumn("in-identifier");
+	   return template;    
 }  
+  
 ```  
   
 Done we already defined our template, we can see three different methods:  
 * **addColumn** *//adds a column* to parent table  
 * **addHtmlColumn** //adds a column to parent table which render html data  
 * **addAccordionColumn** //adds a column to accordion template  
+* **HiddenColumn** //adds a column with display:none, used for example to store identifier values
   
 Now lets add another method to our component to fill rows and see how it works.  
 ```typescript  

@@ -26,10 +26,12 @@ export class AppComponent {
         template.addColumn("Marvel Movie", "*")
             .addColumn("Year", "50px")
             .addColumn("Main Character", "250px")
-            .addHtmlColumn("Revenues", "100px");
+            .addHtmlColumn("Revenues", "100px")
+            .addHiddenColumn('identifier');
         template.addAccordionColumn("Avenger Name", "200px")
             .addAccordionColumn("Avenger Codename", "400px")
-            .addAccordionColumn("Main Power", "400px");
+            .addAccordionColumn("Main Power", "400px")
+            .addAccordionHiddenColumn('in-identifier');
         return template;
     }
 
@@ -39,19 +41,21 @@ export class AppComponent {
             "The Avengers",
             "2012",
             "None",
-            `<button>$1,519,479,547</button>`
+            `<button>$1,519,479,547</button>`,
+            '10024039431;2'
         ]);
         row.addAccordionRows(
-            [["Tony Stark", "Iron Man", "Playboy, Billionaire, Philanthropist"
-            ],["Bruce Banner",  "Hulk", "Infinity Strength, Endurance"
-            ],["Steve Rogers", "Captain America", "Super Soldier, Strength, Endurance, Agility, Speed"
-            ],["Thor Odinson", "Thor", "Long Life, Lightning Control, Mjolnir, Super Strength, Speed, Endurance"]]
+            [["Tony Stark", "Iron Man", "Playboy, Billionaire, Philanthropist", "HiddenA"
+            ],["Bruce Banner",  "Hulk", "Infinity Strength, Endurance", "HiddenB"
+            ],["Steve Rogers", "Captain America", "Super Soldier, Strength, Endurance, Agility, Speed", "HiddenC"
+            ],["Thor Odinson", "Thor", "Long Life, Lightning Control, Mjolnir, Super Strength, Speed, Endurance", ""]]
         );
         let rowWithoutAccordion = data.addRow([
             "Avengers: Age of Ultron",
             "2015",
             "Iron Man",
-            `<a href="https://www.the-numbers.com/movie/Avengers-Age-of-Ultron#tab=summary">$1,408,218,722</a>`
+            `<a href="https://www.the-numbers.com/movie/Avengers-Age-of-Ultron#tab=summary">$1,408,218,722</a>`,
+            "45679872654;1"
         ]);
         return data;
     }

@@ -16,12 +16,12 @@ export class Row {
 }
 
 export class Column {
-    name: String;
-    width: Number;
+    name: string;
+    width: string;
+    hidden: boolean;
 
-    constructor(name, width) {
+    constructor(name) {
         this.name = name;
-        this.width = width;
     }
 }
 
@@ -30,7 +30,8 @@ export class TableColumn extends Column {
     private htmlAllowed: boolean;
 
     constructor(name, width) {
-        super(name, width);
+        super(name);
+        this.width = width;
     }
 
     allowHtml(allow: boolean) {
@@ -45,7 +46,8 @@ export class TableColumn extends Column {
 
 export class AccordionColumn extends Column {
     constructor(name, width) {
-        super(name, width);
+        super(name);
+        this.width = width;
     }
 }
 
@@ -102,6 +104,13 @@ export class AccordionTemplate {
         return this;
     }
 
+    addHiddenColumn(name: string) {
+        let column = new TableColumn(name, '0px');
+        column.hidden = true;
+        this.tableColumns.push(column);
+        return this;
+    }
+
     /**
      * Returns all columns inclusively columns added automatically
      */
@@ -146,12 +155,23 @@ export class AccordionTemplate {
     }
 
     /**
+     * Builder method to add hidden column to accordion model
+     */
+    addAccordionHiddenColumn(name: string) {
+        let column = new AccordionColumn(name, '0px');
+        column.hidden = true;
+        this.accordionColumns.push(column);
+        return this;
+    }
+
+    /**
      * Add a column which is allowed to render HTML
      */
     addHtmlColumn(name: string, width: string) {
         let tableColumn = new TableColumn(name, width);
         tableColumn.allowHtml(true);
         this.tableColumns.push(tableColumn);
+        return this;
     }
 
     /**
