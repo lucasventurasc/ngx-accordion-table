@@ -12,10 +12,21 @@
                     </span>
                 </td>
                 <ng-container *ngFor="let cell of row.getCells(); let i = index;">
-                    <td *ngIf="data.isHtmlColumn(i)" [innerHTML]="cell | keepHtml"></td>
-                    <td *ngIf="!data.isHtmlColumn(i)">{{cell}}</td>
+                    <td *ngIf="data.isHtmlColumn(i)">
+                        <ngx-clickable-cell [eventListener]="template.eventListener"
+                                            [isHtml]="true"
+                                            [value]="cell"
+                                            [row]="row"
+                                            [column]="template.getTableColumns()[i]"></ngx-clickable-cell>
+                    </td>
+                    <td *ngIf="!data.isHtmlColumn(i)">
+                        <ngx-clickable-cell [eventListener]="template.eventListener"
+                                            [value]="cell"
+                                            [row]="row"
+                                            [column]="template.getTableColumns()[i]"
+                        ></ngx-clickable-cell>
+                    </td>
                 </ng-container>
-
             </tr>
             <tr class="extra">
                 <td colspan="5" style="padding-left:80px;">

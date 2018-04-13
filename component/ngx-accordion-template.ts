@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {EventEmitter, Pipe, PipeTransform} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 export {SafeHtml}
 
@@ -55,11 +55,35 @@ export enum TargetOpenAction {
     ELEMENT = 3
 }
 
+export class AccordionEventListener {
+
+    private eventEmitters: Map<string, EventEmitter<any>>;
+
+    constructor() {
+        this.eventEmitters = new Map();
+    }
+
+    public notifyClickOn(row: TableRow, column: Column) {
+        let key = column.name.toLowerCase();
+        if(this.eventEmitters.has(key)) {
+            let event = <EventEmitter<any>> this.eventEmitters.get(key);
+            event.emit(row);
+        }
+    }
+
+    public subscribe(columnName: string, callback) {
+        let eventEmitter = new EventEmitter();
+        eventEmitter.subscribe(callback);
+        this.eventEmitters.set(columnName.toLowerCase(), eventEmitter);
+    }
+}
+
 export class AccordionTemplate {
     private accordionColumns: Array<AccordionColumn>;
     private tableColumns: Array<TableColumn>;
     private interactiveColumn: string;
     private targetOpenAction: TargetOpenAction;
+    public eventListener: AccordionEventListener;
 
     constructor() {
         let chevronColumn = new TableColumn("", "50px");
@@ -67,6 +91,7 @@ export class AccordionTemplate {
         this.accordionColumns = [];
         this.interactiveColumn = `<span _ngcontent-c1 class="chevron-up"></span>`;
         this.targetOpenAction = TargetOpenAction.ROW;
+        this.eventListener = new AccordionEventListener();
     }
 
     /**

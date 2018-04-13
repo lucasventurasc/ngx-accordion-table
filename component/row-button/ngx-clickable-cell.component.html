@@ -1,0 +1,9 @@
+<ng-container *ngIf="isHtml">
+    <span (click)="fireCellClick($event)" [innerHTML]="value | keepHtml">
+    </span>
+</ng-container>
+<ng-container *ngIf="!isHtml">
+    <span (click)="fireCellClick($event)">
+        {{value}}
+    </span>
+</ng-container>

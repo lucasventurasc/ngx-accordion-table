@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AccordionData, AccordionTemplate} from "ngx-accordion-table";
-import {TargetOpenAction} from "../../../../component/ngx-accordion-template";
+import {TableRow, TargetOpenAction} from "../../../../component/ngx-accordion-template";
 
 @Component({
     selector: 'app-root',
@@ -19,6 +19,10 @@ export class AppComponent {
     private static buildTemplate() {
         let template = new AccordionTemplate();
         template.setTargetOpenAction(TargetOpenAction.ELEMENT);
+        template.eventListener.subscribe("Revenues", function(row: TableRow) {
+            console.log(row.getCells());
+        });
+
         template.addColumn("Marvel Movie", "*")
             .addColumn("Year", "50px")
             .addColumn("Main Character", "250px")
@@ -35,7 +39,7 @@ export class AppComponent {
             "The Avengers",
             "2012",
             "None",
-            `<a href="https://www.the-numbers.com/movie/Avengers-The-(2012)">$1,519,479,547</a>`
+            `<button>$1,519,479,547</button>`
         ]);
         row.addAccordionRows(
             [["Tony Stark", "Iron Man", "Playboy, Billionaire, Philanthropist"
